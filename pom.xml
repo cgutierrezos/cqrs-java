@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.cg.query.cqrs</groupId>
-    <artifactId>CQRS-Lib</artifactId>
+    <artifactId>cqrs-lib</artifactId>
     <version>1.0</version>
     <packaging>jar</packaging>
     <build>
@@ -43,7 +43,19 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>15</maven.compiler.source>
         <maven.compiler.target>15</maven.compiler.target>
-        <exec.mainClass>com.cg.query.querylibrary.QueryLibrary</exec.mainClass>
+        <file>C:\Users\cristian b\Documents\NetBeansProjects\QueryLibrary\target\CQRS-Lib-1.0.jar</file>
+        <repositoryid>github</repositoryid>
+        <url>https://cgutierrezos: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@maven.pkg.github.com/cgutierrezos/cqrs-java</url>
+        <groupId>com.cg.query.cqrs</groupId>
+        <artifactId>cqrs-lib</artifactId>
+        <version>1.0</version>
     </properties>
     <name>CQRS</name>
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>cgutierrezos</name>
+            <url>https://maven.pkg.github.com/cgutierrezos/cqrs-java</url>
+        </repository>
+    </distributionManagement>
 </project>

@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
-Test set: querybus.NotifyQueryBusTest
+Test set: commandBus.LocalCommandBusTest
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.072 s - in querybus.NotifyQueryBusTest
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.348 s - in commandBus.LocalCommandBusTest

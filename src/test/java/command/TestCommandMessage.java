@@ -2,32 +2,25 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.cg.cqrs.command.domain;
-
-import java.util.Date;
+package command;
 
 /**
  *
  * @author cristian b
  */
-public class CommandHeader {
+public class TestCommandMessage {
     
     private final String id;
-    private final Date timeStamp;
+    private final String foo;
 
     /**
      *
      * @param id
-     * @param timeStamp
+     * @param foo
      */
-    public CommandHeader(String id, Date timeStamp) {
+    public TestCommandMessage(String id, String foo) {
         this.id = id;
-        this.timeStamp = timeStamp;
-    }
-    
-    public CommandHeader(String id) {
-        this.id = id;
-        this.timeStamp =  new Date();
+        this.foo = foo;
     }
 
     /**
@@ -35,15 +28,15 @@ public class CommandHeader {
      * @return
      */
     public String id() {
-        return this.id;
+        return id;
     }
 
     /**
      *
      * @return
      */
-    public Date timeStamp() {
-        return this.timeStamp;
+    public String foo() {
+        return foo;
     }
     
     

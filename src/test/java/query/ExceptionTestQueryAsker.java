@@ -11,11 +11,11 @@ import com.cg.cqrs.query.domain.QueryResponse;
  *
  * @author cristian b
  */
-public class TestQueryAsker implements QueryAsker<TestQuery>{
+public class ExceptionTestQueryAsker implements QueryAsker<TestQuery>{
 
     private final TestQueryChecker checker;
     
-    public TestQueryAsker(TestQueryChecker checker) {
+    public ExceptionTestQueryAsker(TestQueryChecker checker) {
         this.checker = checker;
     }
 
@@ -26,8 +26,10 @@ public class TestQueryAsker implements QueryAsker<TestQuery>{
 
     @Override
     public QueryResponse<TestQuery> ask(TestQuery query) throws Exception {
+        
         this.checker.check(query);
-        return new TestQueryResponse(query);
+        
+        throw new Exception("Hnadle Excpetion in query");
     }
     
     

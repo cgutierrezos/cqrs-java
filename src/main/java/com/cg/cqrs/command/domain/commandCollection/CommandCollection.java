@@ -20,6 +20,7 @@ public class CommandCollection {
         this.comands = new ArrayList<>();
     }
     
+    
     public void add(Command command){
         this.comands.add(command);
     }

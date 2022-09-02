@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="querybus.NotifyQueryBusTest" time="0.068" tests="2" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="querybus.NotifyQueryBusTest" time="0.072" tests="2" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="15"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,9 +15,8 @@
     <property name="user.country" value="CO"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-15.0.2\bin"/>
-    <property name="sun.java.command" value="C:\Users\CRISTI~1\AppData\Local\Temp\surefire16460078778122880039\surefirebooter14201209140800488717.jar C:\Users\cristian b\AppData\Local\Temp\surefire16460078778122880039 2022-08-30T22-55-06_714-jvmRun1 surefire13294491496215782342tmp surefire_06423655631471300780tmp"/>
+    <property name="sun.java.command" value="C:\Users\CRISTI~1\AppData\Local\Temp\surefire10191706792939780056\surefirebooter4856903317976524547.jar C:\Users\cristian b\AppData\Local\Temp\surefire10191706792939780056 2022-09-02T00-03-14_343-jvmRun1 surefire4499822037440530358tmp surefire_01078215097208104128tmp"/>
     <property name="jdk.debug" value="release"/>
-    <property name="test" value="querybus.**.*Test"/>
     <property name="surefire.test.class.path" value="C:\Users\cristian b\Documents\NetBeansProjects\QueryLibrary\target\test-classes;C:\Users\cristian b\Documents\NetBeansProjects\QueryLibrary\target\classes;C:\Users\cristian b\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.6.0\junit-jupiter-api-5.6.0.jar;C:\Users\cristian b\.m2\repository\org\apiguardian\apiguardian-api\1.1.0\apiguardian-api-1.1.0.jar;C:\Users\cristian b\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\cristian b\.m2\repository\org\junit\platform\junit-platform-commons\1.6.0\junit-platform-commons-1.6.0.jar;C:\Users\cristian b\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.6.0\junit-jupiter-params-5.6.0.jar;C:\Users\cristian b\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.6.0\junit-jupiter-engine-5.6.0.jar;C:\Users\cristian b\.m2\repository\org\junit\platform\junit-platform-engine\1.6.0\junit-platform-engine-1.6.0.jar;C:\Users\cristian b\.m2\repository\com\github\javafaker\javafaker\1.0.2\javafaker-1.0.2.jar;C:\Users\cristian b\.m2\repository\org\apache\commons\commons-lang3\3.5\commons-lang3-3.5.jar;C:\Users\cristian b\.m2\repository\org\yaml\snakeyaml\1.23\snakeyaml-1.23-android.jar;C:\Users\cristian b\.m2\repository\com\github\mifmif\generex\1.0.2\generex-1.0.2.jar;C:\Users\cristian b\.m2\repository\dk\brics\automaton\automaton\1.11-8\automaton-1.11-8.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="user.home" value="C:\Users\cristian b"/>
@@ -31,7 +30,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\CRISTI~1\AppData\Local\Temp\surefire16460078778122880039\surefirebooter14201209140800488717.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\CRISTI~1\AppData\Local\Temp\surefire10191706792939780056\surefirebooter4856903317976524547.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="15.0.2+7-27"/>
@@ -57,6 +56,6 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="59.0"/>
   </properties>
-  <testcase name="notifyQuery" classname="querybus.NotifyQueryBusTest" time="0.033"/>
-  <testcase name="notifyQueryException" classname="querybus.NotifyQueryBusTest" time="0.031"/>
+  <testcase name="notifyQuery" classname="querybus.NotifyQueryBusTest" time="0.039"/>
+  <testcase name="notifyQueryException" classname="querybus.NotifyQueryBusTest" time="0.025"/>
 </testsuite>

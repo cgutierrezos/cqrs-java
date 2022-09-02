@@ -12,8 +12,11 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+import query.ExceptionTestQueryAsker;
 import query.TestQuery;
 import query.TestQueryAsker;
+import query.TestQueryBuilder;
+import query.TestQueryChecker;
 import query.TestQueryMessage;
 import query.TestQueryResponse;
 
@@ -24,9 +27,12 @@ import query.TestQueryResponse;
 public class LocalQueryBusTest {
     
     private final Faker faker;
+    private final TestQueryBuilder builder;
     
     public LocalQueryBusTest() {
         this.faker = new Faker();
+        this.builder = new TestQueryBuilder(this.faker);
+        
     }
     
     @BeforeEach
@@ -42,18 +48,15 @@ public class LocalQueryBusTest {
         
         LocalQueryBus queryBus = new LocalQueryBus();
         
-        queryBus.subscribe(new TestQueryAsker());
+        TestQuery query = this.builder.build();
         
-        TestQuery query = new TestQuery(
-                new TestQueryMessage(
-                        this.faker.internet().uuid(), 
-                        this.faker.name().name()
-                ),
-                new QueryHeader(this.faker.internet().uuid())
-        );
+        TestQueryChecker checker = new TestQueryChecker(query);
+        
+        queryBus.subscribe(new TestQueryAsker(checker));
         
         TestQueryResponse response = (TestQueryResponse) queryBus.ask(query);
         
+        assertTrue(checker.isChecked());
         assertTrue(response.toString().contains(query.toString()));
         
     }
@@ -62,22 +65,24 @@ public class LocalQueryBusTest {
     @Test
     public void askThrows() throws Exception {
         
-        QueryBus queryBus = new LocalQueryBus();
+        LocalQueryBus queryBus = new LocalQueryBus();
         
-        TestQuery query = new TestQuery(
-                new TestQueryMessage(
-                        this.faker.internet().uuid(), 
-                        this.faker.name().name()
-                ),
-                new QueryHeader(this.faker.internet().uuid())
-        );
+        TestQuery query = this.builder.build();
+        
+        TestQueryChecker checker = new TestQueryChecker(query);
+        
+        queryBus.subscribe(new ExceptionTestQueryAsker(checker));
         
         Exception e = assertThrows(Exception.class, () -> {
               queryBus.ask(query);
         });
         
+        assertTrue(checker.isChecked());
         assertEquals(e.getClass(), Exception.class);
         
     }
+    
+    
+    
     
 }

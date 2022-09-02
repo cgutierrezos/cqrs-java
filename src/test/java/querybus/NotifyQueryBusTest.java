@@ -16,6 +16,9 @@ import query.TestQuery;
 import query.TestQueryAsker;
 import query.TestQueryResponse;
 import static org.junit.jupiter.api.Assertions.*;
+import query.ExceptionTestQueryAsker;
+import query.TestQueryBuilder;
+import query.TestQueryChecker;
 import query.TestQueryMessage;
 
 /**
@@ -25,11 +28,11 @@ import query.TestQueryMessage;
 public class NotifyQueryBusTest {
     
     private final Faker faker;
+    private final TestQueryBuilder builder;
     
     public NotifyQueryBusTest() {
-        
         this.faker = new Faker();
-        
+        this.builder = new TestQueryBuilder(this.faker);
     }
 
     @org.junit.jupiter.api.BeforeAll
@@ -58,18 +61,15 @@ public class NotifyQueryBusTest {
                 notifier
         );
         
-        queryBus.subscribe(new TestQueryAsker());
+        TestQuery query = this.builder.build();
         
-        TestQuery query = new TestQuery(
-                new TestQueryMessage(
-                        this.faker.internet().uuid(), 
-                        this.faker.name().name()
-                ),
-                new QueryHeader(this.faker.internet().uuid())
-        );
+        TestQueryChecker checker =  new TestQueryChecker(query);
+        
+        queryBus.subscribe(new TestQueryAsker(checker));
         
         TestQueryResponse response = (TestQueryResponse) queryBus.ask(query);
         
+        assertTrue(checker.isChecked());
         assertTrue(response.toString().contains(query.toString()));
         assertTrue(notifier.wasQueryNotified(query));
     }
@@ -85,18 +85,17 @@ public class NotifyQueryBusTest {
                 exceptionNotifier
         );
         
-        TestQuery query = new TestQuery(
-                new TestQueryMessage(
-                        this.faker.internet().uuid(), 
-                        this.faker.name().name()
-                ),
-                new QueryHeader(this.faker.internet().uuid())
-        );
+        TestQuery query = this.builder.build();
+        
+        TestQueryChecker checker =  new TestQueryChecker(query);
+        
+        queryBus.subscribe(new ExceptionTestQueryAsker(checker));
         
         Exception e = assertThrows(Exception.class, () -> {
               queryBus.ask(query);
         });
         
+        assertTrue(checker.isChecked());
         assertEquals(e.getClass(), Exception.class);
         assertTrue(exceptionNotifier.wasQueryNotified(query));
         

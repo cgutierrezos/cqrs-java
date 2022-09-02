@@ -1,6 +1,6 @@
 query\TestQuery.class
+query\TestQueryAsker.class
+query\TestQueryResponse.class
 querybus\LocalQueryBusTest.class
 query\TestQueryMessage.class
 querybus\NotifyQueryBusTest.class
-query\TestQueryAsker.class
-query\TestQueryResponse.class

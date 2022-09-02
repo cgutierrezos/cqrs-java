@@ -1,6 +1,16 @@
 C:\Users\cristian b\Documents\NetBeansProjects\QueryLibrary\src\test\java\query\TestQuery.java
 C:\Users\cristian b\Documents\NetBeansProjects\QueryLibrary\src\test\java\query\TestQueryResponse.java
 C:\Users\cristian b\Documents\NetBeansProjects\QueryLibrary\src\test\java\querybus\NotifyQueryBusTest.java
+C:\Users\cristian b\Documents\NetBeansProjects\QueryLibrary\src\test\java\command\TestCommandChecker.java
 C:\Users\cristian b\Documents\NetBeansProjects\QueryLibrary\src\test\java\querybus\LocalQueryBusTest.java
+C:\Users\cristian b\Documents\NetBeansProjects\QueryLibrary\src\test\java\query\TestQueryChecker.java
+C:\Users\cristian b\Documents\NetBeansProjects\QueryLibrary\src\test\java\command\TestCommandBuilder.java
+C:\Users\cristian b\Documents\NetBeansProjects\QueryLibrary\src\test\java\command\TestCommandMessage.java
+C:\Users\cristian b\Documents\NetBeansProjects\QueryLibrary\src\test\java\query\ExceptionTestQueryAsker.java
+C:\Users\cristian b\Documents\NetBeansProjects\QueryLibrary\src\test\java\command\TestCommand.java
+C:\Users\cristian b\Documents\NetBeansProjects\QueryLibrary\src\test\java\commandBus\LocalCommandBusTest.java
+C:\Users\cristian b\Documents\NetBeansProjects\QueryLibrary\src\test\java\query\TestQueryBuilder.java
 C:\Users\cristian b\Documents\NetBeansProjects\QueryLibrary\src\test\java\query\TestQueryMessage.java
+C:\Users\cristian b\Documents\NetBeansProjects\QueryLibrary\src\test\java\command\ExceptionTestCommandHandler.java
+C:\Users\cristian b\Documents\NetBeansProjects\QueryLibrary\src\test\java\command\TestCommandHandler.java
 C:\Users\cristian b\Documents\NetBeansProjects\QueryLibrary\src\test\java\query\TestQueryAsker.java
