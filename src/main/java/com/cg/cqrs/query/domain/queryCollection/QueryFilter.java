@@ -2,6 +2,7 @@ package com.cg.cqrs.query.domain.queryCollection;
 
 import com.cg.cqrs.query.domain.Query;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Iterator;
 
 /*
@@ -15,20 +16,21 @@ import java.util.Iterator;
 /**
  *
  * @author cristian b
+ * @param <T>
  */
-public class QueryFilter {
+public class QueryFilter<T extends Query> {
     
-    public interface filterCallback {
-        public boolean filter(Query query);
+    public interface filterCallback<T extends Query> {
+        public boolean filter(T query);
     }
     
-    private final ArrayList<Query> queries;
+    private final Collection<T> queries;
 
     /**
      *
      * @param queries
      */
-    public QueryFilter(ArrayList<Query> queries) {
+    public QueryFilter(Collection<T> queries) {
         this.queries = queries;
     }
 
@@ -37,8 +39,8 @@ public class QueryFilter {
      * @param queryClass
      * @return
      */
-    public QueryCollection findManyByClass(Class<Query> queryClass) {
-        return this.findMany((query) -> {
+    public QueryCollection<T> findManyByClass(Class<T> queryClass) {
+        return this.findMany((T query) -> {
             return queryClass.equals(query.getClass());
         });
     }
@@ -48,8 +50,8 @@ public class QueryFilter {
      * @param queryID
      * @return
      */
-    public Query findOneByID(String queryID){
-        return this.findOne((query) -> {
+    public T findOneByID(String queryID){
+        return this.findOne((T query) -> {
             return queryID.equals(query.queryID());
         });
     }
@@ -59,11 +61,11 @@ public class QueryFilter {
      * @param callback
      * @return
      */
-    public Query findOne(filterCallback callback){
-        Iterator<Query> iterator = this.queries.iterator();
+    public T findOne(filterCallback<T> callback){
+        Iterator<T> iterator = this.queries.iterator();
         
         while(iterator.hasNext()) {
-            Query query = iterator.next();
+            T query = iterator.next();
             
             if(callback.filter(query)) {
                 return query;
@@ -78,13 +80,13 @@ public class QueryFilter {
      * @param callback
      * @return
      */
-    public QueryCollection findMany(filterCallback callback) {
-        QueryCollection filtered =  new QueryCollection();
+    public QueryCollection<T> findMany(filterCallback<T> callback) {
+        QueryCollection<T> filtered =  new QueryCollection();
         
-        Iterator<Query> iterator = this.queries.iterator();
+        Iterator<T> iterator = this.queries.iterator();
         
         while(iterator.hasNext()) {
-            Query query = iterator.next();
+            T query = iterator.next();
             
             if(callback.filter(query)) {
                 filtered.add(query);

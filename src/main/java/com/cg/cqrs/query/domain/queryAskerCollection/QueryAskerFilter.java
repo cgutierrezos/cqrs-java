@@ -11,28 +11,29 @@ import java.util.Collection;
 /**
  *
  * @author cristian b
+ * @param <T>
  */
-public class QueryAskerFilter {
+public class QueryAskerFilter<T extends QueryAsker> {
     
-    public interface FilterCallback {
-        public boolean filter(QueryAsker asker);
+    public interface FilterCallback<T extends QueryAsker> {
+        public boolean filter(T asker);
     }
     
-    private final Collection<QueryAsker> askers;
+    private final Collection<T> askers;
 
-    public QueryAskerFilter(Collection<QueryAsker> askers) {
+    public QueryAskerFilter(Collection<T> askers) {
         this.askers = askers;
     }
     
     
-    public <T extends Query>QueryAsker findOneByQueryClass(Class<T> queryClass){
-        return this.findOne((QueryAsker asker) -> {
+    public T findOneByQueryClass(Class<T> queryClass){
+        return this.findOne((T asker) -> {
             return queryClass.getSimpleName().equals(asker.subscribedTo());
         });
     }
     
-    public QueryAsker findOne(FilterCallback callback) {
-        for (QueryAsker asker : this.askers) {
+    public T findOne(FilterCallback<T> callback) {
+        for (T asker : this.askers) {
             if(callback.filter(asker)){
                 return asker;
             }

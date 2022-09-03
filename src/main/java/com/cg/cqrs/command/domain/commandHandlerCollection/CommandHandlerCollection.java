@@ -6,39 +6,32 @@ package com.cg.cqrs.command.domain.commandHandlerCollection;
 
 import com.cg.cqrs.command.domain.CommandHandler;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Iterator;
 
 /**
  *
  * @author cristian b
+ * @param <T>
  */
-public class CommandHandlerCollection {
+public class CommandHandlerCollection<T extends CommandHandler> {
     
-    public interface ForEachCallback {
-        public void next(CommandHandler handler);
-    }
-    
-    private final ArrayList<CommandHandler> handlers;
+    private final Collection<T> handlers;
 
     public CommandHandlerCollection() {
         this.handlers = new ArrayList<>();
     }
     
-    public void add(CommandHandler handler) {
+    public void add(T handler) {
         this.handlers.add(handler);
     }
     
-    public Iterator<CommandHandler> iterator() {
+    public Iterator<T> iterator() {
         return this.handlers.iterator();
     }
     
-    public CommandHandlerFilter filter() {
+    public CommandHandlerFilter<T> filter() {
         return new CommandHandlerFilter(this.handlers);
     }
-    
-    public void forEach(ForEachCallback callback) {
-        for (CommandHandler handler : this.handlers) {
-            callback.next(handler);
-        }
-    }
+
 }

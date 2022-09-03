@@ -6,39 +6,33 @@ package com.cg.cqrs.query.domain.queryAskerCollection;
 
 import com.cg.cqrs.query.domain.QueryAsker;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Iterator;
 
 
 /**
  *
  * @author cristian b
+ * @param <T>
  */
-public class QueryAskerCollection {
+public class QueryAskerCollection<T extends QueryAsker> {
     
-    public interface ForEachCallback {
-        public void next(QueryAsker asker);
-    }
-    private final ArrayList<QueryAsker> askers;
+    
+    private final Collection<T> askers;
 
     public QueryAskerCollection() {
         this.askers = new ArrayList<>();
     }
     
-    public void add(QueryAsker asker){
+    public void add(T asker){
         this.askers.add(asker);
     }
     
-    public Iterator<QueryAsker> iterator() {
+    public Iterator<T> iterator() {
         return this.askers.iterator();
     }
     
-    public void forEach(ForEachCallback callback) {
-        for (QueryAsker asker : this.askers) {
-            callback.next(asker);
-        }
-    }
-    
-    public QueryAskerFilter filter() {
+    public QueryAskerFilter<T> filter() {
         return new QueryAskerFilter(this.askers);
     }
 }

@@ -11,28 +11,29 @@ import java.util.Collection;
 /**
  *
  * @author cristian b
+ * @param <T>
  */
-public class CommandHandlerFilter {
+public class CommandHandlerFilter<T extends CommandHandler> {
     
-    public interface FilterCallback {
-        public boolean filter(CommandHandler handler);
+    public interface FilterCallback<T extends CommandHandler> {
+        public boolean filter(T handler);
     }
     
-    private final Collection<CommandHandler> handlers;
+    private final Collection<T> handlers;
 
-    public CommandHandlerFilter(Collection<CommandHandler> handlers) {
+    public CommandHandlerFilter(Collection<T> handlers) {
         this.handlers = handlers;
     }
     
-    public <C extends Command>CommandHandler<C> findOneByCommandClass(Class<C> commandClass) {
-        return this.findOne((CommandHandler handler) -> {
+    public T findOneByCommandClass(Class<Command> commandClass) {
+        return this.findOne((T handler) -> {
            return commandClass.getSimpleName().equals(handler.subscribedTo());
         });
     }
     
-    public CommandHandler findOne(FilterCallback callback) {
+    public T findOne(FilterCallback<T> callback) {
         
-        for (CommandHandler handler : this.handlers) {
+        for (T handler : this.handlers) {
             if(callback.filter(handler)){
                 return handler;
             }

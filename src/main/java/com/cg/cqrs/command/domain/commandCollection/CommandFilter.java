@@ -13,23 +13,25 @@ import java.util.Iterator;
 /**
  *
  * @author cristian b
+ * @param <T>
  */
-public class CommandFilter {
+public class CommandFilter<T extends Command> {
     
     /**
      *
+     * @param <T>
      */
-    public interface filterCallback {
-        public boolean filter(Command command);
+    public interface filterCallback<T extends Command> {
+        public boolean filter(T command);
     }
     
-    private final Collection<Command> commands;
+    private final Collection<T> commands;
 
     /**
      *
      * @param commands
      */
-    public CommandFilter(Collection<Command> commands) {
+    public CommandFilter(Collection<T> commands) {
         this.commands = commands;
     }
     
@@ -38,9 +40,9 @@ public class CommandFilter {
      * @param commandClass
      * @return
      */
-    public CommandCollection findManyByClass(Class<Command> commandClass){
+    public CommandCollection<T> findManyByClass(Class<T> commandClass){
         
-        return this.findMany((Command command) -> {
+        return this.findMany((T command) -> {
             return commandClass.equals(command.getClass());
         });
     }
@@ -50,9 +52,9 @@ public class CommandFilter {
      * @param id
      * @return
      */
-    public Command findOneByID(String id) {
+    public T findOneByID(String id) {
         
-        return this.findOne((Command command) -> {
+        return this.findOne((T command) -> {
             return id.equals(command.commandId());
         });
     }
@@ -62,11 +64,11 @@ public class CommandFilter {
      * @param callback
      * @return
      */
-    public Command findOne(filterCallback callback) {
-        Iterator<Command> iterator = this.commands.iterator();
+    public T findOne(filterCallback<T> callback) {
+        Iterator<T> iterator = this.commands.iterator();
         
         while(iterator.hasNext()){
-            Command command = iterator.next();
+            T command = iterator.next();
             
             if(callback.filter(command)){
                 return command;
@@ -81,13 +83,13 @@ public class CommandFilter {
      * @param callback
      * @return
      */
-    public CommandCollection findMany(filterCallback callback) {
+    public CommandCollection<T> findMany(filterCallback<T> callback) {
         
-        CommandCollection filtered = new CommandCollection();
+        CommandCollection<T> filtered = new CommandCollection();
         
-        Iterator<Command> iterator = this.commands.iterator();
+        Iterator<T> iterator = this.commands.iterator();
         while(iterator.hasNext()){
-            Command command = iterator.next();
+            T command = iterator.next();
             
             if(callback.filter(command)){
                 filtered.add(command);

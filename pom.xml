@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.cg.query.cqrs</groupId>
     <artifactId>cqrs-lib</artifactId>
-    <version>1.0</version>
+    <version>1.0.1</version>
     <packaging>jar</packaging>
     <build>
         <plugins>
@@ -45,12 +45,12 @@
         <maven.compiler.target>15</maven.compiler.target>
         <file>C:\Users\cristian b\Documents\NetBeansProjects\QueryLibrary\target\CQRS-Lib-1.0.jar</file>
         <repositoryid>github</repositoryid>
-        <url>https://cgutierrezos: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@maven.pkg.github.com/cgutierrezos/cqrs-java</url>
+        <url>https://cgutierrezos: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@maven.pkg.github.com/cgutierrezos/cqrs-java</url>
         <groupId>com.cg.query.cqrs</groupId>
         <artifactId>cqrs-lib</artifactId>
-        <version>1.0</version>
+        <version>1.0.1</version>
     </properties>
-    <name>CQRS</name>
+    <name>cqrs</name>
     <distributionManagement>
         <repository>
             <id>github</id>

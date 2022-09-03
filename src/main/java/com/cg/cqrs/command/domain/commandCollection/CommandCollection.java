@@ -6,43 +6,33 @@ package com.cg.cqrs.command.domain.commandCollection;
 
 import com.cg.cqrs.command.domain.Command;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Iterator;
-import java.util.function.Consumer;
 
 /**
  *
  * @author cristian b
+ * @param <T>
  */
-public class CommandCollection {
+public class CommandCollection<T extends Command> {
     
-    public interface EachCallback {
-        public void each(Command command);
-    }
-    
-    private final ArrayList<Command> comands;
+    private final Collection<T> comands;
 
     public CommandCollection() {
         this.comands = new ArrayList<>();
     }
     
     
-    public void add(Command command){
+    public void add(T command){
         this.comands.add(command);
     }
     
-    public Iterator<Command> iterator() {
+    public Iterator<T> iterator() {
         return this.comands.iterator();
     }
     
-    public CommandFilter filter(){
+    public CommandFilter<T> filter(){
         return new CommandFilter(this.comands);
-    }
-    
-    
-    public void forEach(EachCallback callback) {
-        for (Command comand : this.comands) {
-            callback.each(comand);
-        }
     }
     
     public int size() {
