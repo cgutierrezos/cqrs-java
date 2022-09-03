@@ -30,7 +30,7 @@ public class FakeExceptionQueryNotifier implements ExceptionQueryNotifier {
         return this.queries.size();
     }
     
-    public boolean wasQueryNotified(Query query) {
+    public boolean isQueryNotified(Query query) {
         
         QueryFilter filter = this.queries.filter();
         

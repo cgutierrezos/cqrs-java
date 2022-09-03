@@ -14,6 +14,11 @@ import java.util.function.Consumer;
  * @author cristian b
  */
 public class CommandCollection {
+    
+    public interface EachCallback {
+        public void each(Command command);
+    }
+    
     private final ArrayList<Command> comands;
 
     public CommandCollection() {
@@ -29,8 +34,15 @@ public class CommandCollection {
         return this.comands.iterator();
     }
     
-    public void forEach(Consumer<Command> callback) {
-        this.comands.forEach(callback);
+    public CommandFilter filter(){
+        return new CommandFilter(this.comands);
+    }
+    
+    
+    public void forEach(EachCallback callback) {
+        for (Command comand : this.comands) {
+            callback.each(comand);
+        }
     }
     
     public int size() {

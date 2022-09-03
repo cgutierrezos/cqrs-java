@@ -71,7 +71,7 @@ public class NotifyQueryBusTest {
         
         assertTrue(checker.isChecked());
         assertTrue(response.toString().contains(query.toString()));
-        assertTrue(notifier.wasQueryNotified(query));
+        assertTrue(notifier.isQueryNotified(query));
     }
     
     
@@ -97,7 +97,7 @@ public class NotifyQueryBusTest {
         
         assertTrue(checker.isChecked());
         assertEquals(e.getClass(), Exception.class);
-        assertTrue(exceptionNotifier.wasQueryNotified(query));
+        assertTrue(exceptionNotifier.isQueryNotified(query));
         
     }
     

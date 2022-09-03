@@ -4,8 +4,6 @@
  */
 package querybus;
 
-import com.cg.cqrs.query.domain.QueryHeader;
-import com.cg.cqrs.queryBus.domain.QueryBus;
 import com.cg.cqrs.queryBus.infra.queryBuses.localQueryBus.LocalQueryBus;
 import com.github.javafaker.Faker;
 import org.junit.jupiter.api.AfterEach;
@@ -17,7 +15,6 @@ import query.TestQuery;
 import query.TestQueryAsker;
 import query.TestQueryBuilder;
 import query.TestQueryChecker;
-import query.TestQueryMessage;
 import query.TestQueryResponse;
 
 /**

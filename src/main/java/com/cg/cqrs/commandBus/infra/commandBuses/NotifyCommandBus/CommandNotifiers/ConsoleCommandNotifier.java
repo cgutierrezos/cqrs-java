@@ -11,7 +11,7 @@ import com.cg.cqrs.commandBus.domain.CommandNotifier;
  *
  * @author cristian b
  */
-public class ConsoleCommandNotifier1 implements CommandNotifier {
+public class ConsoleCommandNotifier implements CommandNotifier {
 
     @Override
     public void notify(Command command) {

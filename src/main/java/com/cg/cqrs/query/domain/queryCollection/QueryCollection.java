@@ -15,6 +15,10 @@ import java.util.function.Consumer;
  */
 public class QueryCollection {
     private final ArrayList<Query> queries;
+    
+    public interface EachCallback {
+        public void each(Query query);
+    }
 
     public QueryCollection() {
         this.queries = new ArrayList<>();
@@ -32,8 +36,10 @@ public class QueryCollection {
         return new QueryFilter(this.queries);
     }
     
-    public void forEach(Consumer<Query> callback) {
-        this.queries.forEach(callback);
+    public void forEach(EachCallback callback) {
+        for (Query query : this.queries) {
+            callback.each(query);
+        }
     }
     
     
