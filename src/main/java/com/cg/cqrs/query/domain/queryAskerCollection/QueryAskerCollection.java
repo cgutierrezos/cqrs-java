@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.cg.cqrs.query.domain.queryAskerCollection;
+package com.cg.cqrs.query.domain.queryaskercollection;
 
 import com.cg.cqrs.query.domain.QueryAsker;
 import java.util.ArrayList;

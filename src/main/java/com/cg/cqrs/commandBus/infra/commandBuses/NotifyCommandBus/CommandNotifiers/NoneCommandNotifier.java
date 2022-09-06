@@ -2,10 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.cg.cqrs.commandBus.infra.commandBuses.NotifyCommandBus.CommandNotifiers;
+
+package com.cg.cqrs.commandbus.infra.commandbuses.notifycommandbus.commandnotifiers;
 
 import com.cg.cqrs.command.domain.Command;
-import com.cg.cqrs.commandBus.domain.CommandNotifier;
+import com.cg.cqrs.commandbus.domain.CommandNotifier;
 
 /**
  *
@@ -15,7 +16,7 @@ public class NoneCommandNotifier implements CommandNotifier {
 
     @Override
     public void notify(Command command) {
-        
+        // NONE NOTIFICATION
     }
     
 }

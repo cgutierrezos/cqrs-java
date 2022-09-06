@@ -2,16 +2,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.cg.cqrs.queryBus.infra.queryBuses.notifyQueryBus;
+package com.cg.cqrs.querybus.infra.querybuses.notifyquerybus;
 
-import com.cg.cqrs.queryBus.domain.ExceptionQueryNotifier;
+import com.cg.cqrs.querybus.domain.ExceptionQueryNotifier;
 import com.cg.cqrs.query.domain.Query;
 import com.cg.cqrs.query.domain.QueryAsker;
 import com.cg.cqrs.query.domain.QueryResponse;
-import com.cg.cqrs.queryBus.domain.QueryBus;
-import com.cg.cqrs.queryBus.infra.queryBuses.notifyQueryBus.exceptionQueryNotifiers.NoneExceptionQueryNotifier;
-import com.cg.cqrs.queryBus.domain.QueryNotifier;
-import com.cg.cqrs.queryBus.infra.queryBuses.notifyQueryBus.queryNotifiers.NoneQueryNotifier;
+import com.cg.cqrs.querybus.domain.QueryBus;
+import com.cg.cqrs.querybus.infra.querybuses.notifyquerybus.exceptionquerynotifiers.NoneExceptionQueryNotifier;
+import com.cg.cqrs.querybus.domain.QueryNotifier;
+import com.cg.cqrs.querybus.infra.querybuses.notifyquerybus.querynotifiers.NoneQueryNotifier;
 
 /**
  *
@@ -53,10 +53,10 @@ public class NotifyQueryBus implements QueryBus {
     }
 
     @Override
-    public <T extends Query> QueryResponse<T> ask(T query) throws Exception {
+    public QueryResponse ask(Query query) {
         try {
 
-            QueryResponse<T> response = this.queryBus.ask(query);
+            QueryResponse response = this.queryBus.ask(query);
             this.notifier.notify(query, response);
             return response;
 

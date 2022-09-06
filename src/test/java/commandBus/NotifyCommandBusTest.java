@@ -4,22 +4,21 @@
  */
 package commandBus;
 
-import com.cg.cqrs.commandBus.infra.commandBuses.NotifyCommandBus.CommandNotifiers.ConsoleCommandNotifier;
-import com.cg.cqrs.commandBus.infra.commandBuses.NotifyCommandBus.CommandNotifiers.FakeCommandNotifier;
-import com.cg.cqrs.commandBus.infra.commandBuses.NotifyCommandBus.ExceptionCommandNotifiers.ExceptionFakeCommandNotifier;
-import com.cg.cqrs.commandBus.infra.commandBuses.NotifyCommandBus.NotifyCommandBus;
-import com.cg.cqrs.commandBus.infra.commandBuses.localCommandBus.LocalCommandBus;
+import com.cg.cqrs.commandbus.infra.commandbuses.notifycommandbus.commandnotifiers.FakeCommandNotifier;
+import com.cg.cqrs.commandbus.infra.commandbuses.notifycommandbus.exceptioncommandnotifiers.ExceptionFakeCommandNotifier;
+import com.cg.cqrs.commandbus.infra.commandbuses.notifycommandbus.NotifyCommandBus;
+import com.cg.cqrs.commandbus.infra.commandbuses.localcommandbus.LocalCommandBus;
 import com.github.javafaker.Faker;
 import command.ExceptionTestCommandHandler;
 import command.TestCommand;
 import command.TestCommandBuilder;
 import command.TestCommandChecker;
 import command.TestCommandHandler;
+import command.TestCommandHandlerException;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
-import query.TestQueryBuilder;
 
 /**
  *
@@ -82,12 +81,12 @@ public class NotifyCommandBusTest {
         
         commandBus.subscibe(new ExceptionTestCommandHandler(checker));
         
-        Exception e = assertThrows(Exception.class, () -> {
+        TestCommandHandlerException e = assertThrows(TestCommandHandlerException.class, () -> {
             commandBus.handle(command);
         });
         
         assertTrue(checker.isChecked());
-        assertTrue(e.getClass().equals(Exception.class));
+        assertTrue(e.getClass().equals(TestCommandHandlerException.class));
         assertTrue(exceptionNotifier.isCommandNotified(command));
 
     }

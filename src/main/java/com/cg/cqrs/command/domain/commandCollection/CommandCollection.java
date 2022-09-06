@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.cg.cqrs.command.domain.commandCollection;
+package com.cg.cqrs.command.domain.commandcollection;
 
 import com.cg.cqrs.command.domain.Command;
 import java.util.ArrayList;
@@ -20,6 +20,10 @@ public class CommandCollection<T extends Command> {
 
     public CommandCollection() {
         this.comands = new ArrayList<>();
+    }
+
+    protected CommandCollection(Collection<T> comands) {
+        this.comands = comands;
     }
     
     

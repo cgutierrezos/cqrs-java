@@ -25,7 +25,7 @@ public class TestQueryAsker implements QueryAsker<TestQuery>{
     }
 
     @Override
-    public QueryResponse<TestQuery> ask(TestQuery query) throws Exception {
+    public QueryResponse ask(TestQuery query) {
         this.checker.check(query);
         return new TestQueryResponse(query);
     }

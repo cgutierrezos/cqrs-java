@@ -18,7 +18,7 @@ public abstract class Command {
      *
      * @param header
      */
-    public Command(CommandHeader header) {
+    protected Command(CommandHeader header) {
         this.header = header;
     }
     

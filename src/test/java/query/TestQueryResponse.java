@@ -10,7 +10,7 @@ import com.cg.cqrs.query.domain.QueryResponse;
  *
  * @author cristian b
  */
-public class TestQueryResponse implements QueryResponse<TestQuery>{
+public class TestQueryResponse implements QueryResponse{
     
     private final TestQuery query;
 

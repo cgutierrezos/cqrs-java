@@ -4,12 +4,11 @@
  */
 package querybus;
 
-import com.cg.cqrs.query.domain.QueryHeader;
-import com.cg.cqrs.queryBus.domain.QueryBus;
-import com.cg.cqrs.queryBus.infra.queryBuses.notifyQueryBus.NotifyQueryBus;
-import com.cg.cqrs.queryBus.infra.queryBuses.localQueryBus.LocalQueryBus;
-import com.cg.cqrs.queryBus.infra.queryBuses.notifyQueryBus.exceptionQueryNotifiers.FakeExceptionQueryNotifier;
-import com.cg.cqrs.queryBus.infra.queryBuses.notifyQueryBus.queryNotifiers.FakeQueryNotifier;
+import com.cg.cqrs.querybus.domain.QueryBus;
+import com.cg.cqrs.querybus.infra.querybuses.notifyquerybus.NotifyQueryBus;
+import com.cg.cqrs.querybus.infra.querybuses.localquerybus.LocalQueryBus;
+import com.cg.cqrs.querybus.infra.querybuses.notifyquerybus.exceptionquerynotifiers.FakeExceptionQueryNotifier;
+import com.cg.cqrs.querybus.infra.querybuses.notifyquerybus.querynotifiers.FakeQueryNotifier;
 import com.github.javafaker.Faker;
 import org.junit.jupiter.api.Test;
 import query.TestQuery;
@@ -17,9 +16,9 @@ import query.TestQueryAsker;
 import query.TestQueryResponse;
 import static org.junit.jupiter.api.Assertions.*;
 import query.ExceptionTestQueryAsker;
+import query.TestQueryAskerException;
 import query.TestQueryBuilder;
 import query.TestQueryChecker;
-import query.TestQueryMessage;
 
 /**
  *
@@ -91,12 +90,12 @@ public class NotifyQueryBusTest {
         
         queryBus.subscribe(new ExceptionTestQueryAsker(checker));
         
-        Exception e = assertThrows(Exception.class, () -> {
+        TestQueryAskerException e = assertThrows(TestQueryAskerException.class, () -> {
               queryBus.ask(query);
         });
         
         assertTrue(checker.isChecked());
-        assertEquals(e.getClass(), Exception.class);
+        assertEquals(e.getClass(), TestQueryAskerException.class);
         assertTrue(exceptionNotifier.isQueryNotified(query));
         
     }

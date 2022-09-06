@@ -2,15 +2,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.cg.cqrs.commandBus.infra.commandBuses.NotifyCommandBus;
+package com.cg.cqrs.commandbus.infra.commandbuses.notifycommandbus;
 
 import com.cg.cqrs.command.domain.Command;
 import com.cg.cqrs.command.domain.CommandHandler;
-import com.cg.cqrs.commandBus.domain.CommandBus;
-import com.cg.cqrs.commandBus.domain.CommandNotifier;
-import com.cg.cqrs.commandBus.domain.ExceptionCommandNotifier;
-import com.cg.cqrs.commandBus.infra.commandBuses.NotifyCommandBus.CommandNotifiers.NoneCommandNotifier;
-import com.cg.cqrs.commandBus.infra.commandBuses.NotifyCommandBus.ExceptionCommandNotifiers.NoneExceptionCommandNotifier;
+import com.cg.cqrs.commandbus.domain.CommandBus;
+import com.cg.cqrs.commandbus.domain.CommandNotifier;
+import com.cg.cqrs.commandbus.domain.ExceptionCommandNotifier;
+import com.cg.cqrs.commandbus.infra.commandbuses.notifycommandbus.commandnotifiers.NoneCommandNotifier;
+import com.cg.cqrs.commandbus.infra.commandbuses.notifycommandbus.exceptioncommandnotifiers.NoneExceptionCommandNotifier;
 
 /**
  *
@@ -54,7 +54,7 @@ public class NotifyCommandBus implements CommandBus {
     }
 
     @Override
-    public void handle(Command command) throws Exception {
+    public void handle(Command command) {
         try{
             this.commandBus.handle(command);
             this.notifier.notify(command);

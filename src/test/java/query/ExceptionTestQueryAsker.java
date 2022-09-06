@@ -25,11 +25,11 @@ public class ExceptionTestQueryAsker implements QueryAsker<TestQuery>{
     }
 
     @Override
-    public QueryResponse<TestQuery> ask(TestQuery query) throws Exception {
+    public QueryResponse ask(TestQuery query) {
         
         this.checker.check(query);
         
-        throw new Exception("Hnadle Excpetion in query");
+        throw new TestQueryAskerException();
     }
     
     

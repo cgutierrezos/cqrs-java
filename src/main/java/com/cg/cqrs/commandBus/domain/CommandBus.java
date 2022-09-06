@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.cg.cqrs.commandBus.domain;
+package com.cg.cqrs.commandbus.domain;
 
 import com.cg.cqrs.command.domain.Command;
 import com.cg.cqrs.command.domain.CommandHandler;
@@ -22,7 +22,6 @@ public interface CommandBus {
     /**
      *
      * @param command
-     * @throws java.lang.Exception
      */
-    public void handle(Command command) throws Exception;
+    public void handle(Command command);
 }

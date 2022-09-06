@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.cg.query.cqrs</groupId>
+    <groupId>com.cg.cqrs</groupId>
     <artifactId>cqrs-lib</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.8</version>
     <packaging>jar</packaging>
+    <name>cqrs</name>
     <build>
         <plugins>
             <plugin>
@@ -12,9 +13,36 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.22.0</version>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.3.0</version>
+                <configuration>
+                    <shadedArtifactAttached>true</shadedArtifactAttached>
+                    <shadedClassifierName>launcher</shadedClassifierName>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
     <dependencies>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>2.12.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>2.12.1</version>
+        </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
@@ -44,14 +72,14 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>15</maven.compiler.source>
         <maven.compiler.target>15</maven.compiler.target>
-        <file>C:\Users\cristian b\Documents\NetBeansProjects\QueryLibrary\target\CQRS-Lib-1.0.jar</file>
-        <repositoryid>github</repositoryid>
-        <url>https://cgutierrezos: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@maven.pkg.github.com/cgutierrezos/cqrs-java</url>
-        <groupId>com.cg.query.cqrs</groupId>
-        <artifactId>cqrs-lib</artifactId>
-        <version>1.0.1</version>
+        <repositoryId>github</repositoryId>
+        <groupId>${project.groupId}</groupId>
+        <artifactId>${project.artifactId}</artifactId>
+        <packaging>${project.packaging}</packaging>
+        <version>${project.version}</version>
+        <url>https://${user}:${token}@maven.pkg.github.com/cgutierrezos/cqrs-java</url>
+        <file>C:\Users\cristian b\Documents\NetBeansProjects\cqrs\target\${project.artifactId}-${project.version}.${project.packaging}</file>
     </properties>
-    <name>cqrs</name>
     <distributionManagement>
         <repository>
             <id>github</id>

@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.cg.cqrs.command.domain.commandHandlerCollection;
+package com.cg.cqrs.command.domain.commandhandlercollection;
 
 import com.cg.cqrs.command.domain.Command;
 import com.cg.cqrs.command.domain.CommandHandler;
@@ -26,9 +26,9 @@ public class CommandHandlerFilter<T extends CommandHandler> {
     }
     
     public T findOneByCommandClass(Class<Command> commandClass) {
-        return this.findOne((T handler) -> {
-           return commandClass.getSimpleName().equals(handler.subscribedTo());
-        });
+        return this.findOne((T handler) -> 
+                commandClass.getSimpleName().equals(handler.subscribedTo())
+        );
     }
     
     public T findOne(FilterCallback<T> callback) {

@@ -16,7 +16,6 @@ public interface CommandHandler<C extends Command> {
     /**
      *
      * @param command
-     * @throws java.lang.Exception
      */
-    public void handle(C command) throws Exception;
+    public void handle(C command);
 }

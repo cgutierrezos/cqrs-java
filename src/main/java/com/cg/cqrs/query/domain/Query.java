@@ -14,7 +14,7 @@ public abstract class Query {
     
     private final QueryHeader header;
 
-    public Query(QueryHeader header) {
+    protected Query(QueryHeader header) {
         this.header = header;
     }
     

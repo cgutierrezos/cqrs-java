@@ -2,13 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.cg.cqrs.queryBus.infra.queryBuses.notifyQueryBus.queryNotifiers;
+package com.cg.cqrs.querybus.infra.querybuses.notifyquerybus.querynotifiers;
 
 import com.cg.cqrs.query.domain.Query;
-import com.cg.cqrs.query.domain.queryCollection.QueryCollection;
-import com.cg.cqrs.query.domain.queryCollection.QueryFilter;
+import com.cg.cqrs.query.domain.querycollection.QueryCollection;
+import com.cg.cqrs.query.domain.querycollection.QueryFilter;
 import com.cg.cqrs.query.domain.QueryResponse;
-import com.cg.cqrs.queryBus.domain.QueryNotifier;
+import com.cg.cqrs.querybus.domain.QueryNotifier;
 
 /**
  *
@@ -23,7 +23,7 @@ public class FakeQueryNotifier implements QueryNotifier {
     }
     
     @Override
-    public <T extends Query>void notify(T query, QueryResponse<T> response) {
+    public void notify(Query query, QueryResponse response) {
         this.queries.add(query);
     }
     

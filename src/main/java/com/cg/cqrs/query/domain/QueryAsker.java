@@ -13,5 +13,5 @@ public interface QueryAsker<Q extends Query> {
     
     public String subscribedTo();
     
-    public QueryResponse<Q> ask(Q query) throws Exception;
+    public QueryResponse ask(Q query);
 }

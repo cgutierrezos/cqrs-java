@@ -24,7 +24,7 @@ public class TestCommandHandler implements CommandHandler<TestCommand> {
     }
 
     @Override
-    public void handle(TestCommand command) throws Exception {
+    public void handle(TestCommand command){
         this.checker.check(command);
     }
     

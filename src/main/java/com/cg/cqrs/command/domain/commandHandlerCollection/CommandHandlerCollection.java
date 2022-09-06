@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.cg.cqrs.command.domain.commandHandlerCollection;
+package com.cg.cqrs.command.domain.commandhandlercollection;
 
 import com.cg.cqrs.command.domain.CommandHandler;
 import java.util.ArrayList;

@@ -2,13 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.cg.cqrs.commandBus.infra.commandBuses.localCommandBus;
+package com.cg.cqrs.commandbus.infra.commandbuses.localcommandbus;
 
 import com.cg.cqrs.command.domain.Command;
 import com.cg.cqrs.command.domain.CommandHandler;
-import com.cg.cqrs.command.domain.commandHandlerCollection.CommandHandlerCollection;
-import com.cg.cqrs.command.domain.commandHandlerCollection.CommandHandlerFilter;
-import com.cg.cqrs.commandBus.domain.CommandBus;
+import com.cg.cqrs.command.domain.commandhandlercollection.CommandHandlerCollection;
+import com.cg.cqrs.command.domain.commandhandlercollection.CommandHandlerFilter;
+import com.cg.cqrs.commandbus.domain.CommandBus;
 
 /**
  *
@@ -36,11 +36,11 @@ public class LocalCommandBus implements CommandBus{
      * @param command
      */
     @Override
-    public void handle(Command command) throws Exception {
+    public void handle(Command command) {
         CommandHandler handler = this.findByCommand(command);
         
         if(handler == null){
-            throw new Exception("No CommandHandler found");
+            throw new CommandHandlerNotFoundException(command);
         }
         
         handler.handle(command);

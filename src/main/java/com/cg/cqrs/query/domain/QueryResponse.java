@@ -7,8 +7,7 @@ package com.cg.cqrs.query.domain;
 /**
  *
  * @author cristian b
- * @param <T>
  */
-public interface QueryResponse<T extends Query> {
+public interface QueryResponse {
     
 }

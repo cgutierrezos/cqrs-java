@@ -4,7 +4,7 @@
  */
 package querybus;
 
-import com.cg.cqrs.queryBus.infra.queryBuses.localQueryBus.LocalQueryBus;
+import com.cg.cqrs.querybus.infra.querybuses.localquerybus.LocalQueryBus;
 import com.github.javafaker.Faker;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -13,6 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import query.ExceptionTestQueryAsker;
 import query.TestQuery;
 import query.TestQueryAsker;
+import query.TestQueryAskerException;
 import query.TestQueryBuilder;
 import query.TestQueryChecker;
 import query.TestQueryResponse;
@@ -70,12 +71,12 @@ public class LocalQueryBusTest {
         
         queryBus.subscribe(new ExceptionTestQueryAsker(checker));
         
-        Exception e = assertThrows(Exception.class, () -> {
+        TestQueryAskerException e = assertThrows(TestQueryAskerException.class, () -> {
               queryBus.ask(query);
         });
         
         assertTrue(checker.isChecked());
-        assertEquals(e.getClass(), Exception.class);
+        assertEquals(e.getClass(), TestQueryAskerException.class);
         
     }
     

@@ -1,7 +1,6 @@
-package com.cg.cqrs.query.domain.queryCollection;
+package com.cg.cqrs.query.domain.querycollection;
 
 import com.cg.cqrs.query.domain.Query;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 
@@ -20,7 +19,7 @@ import java.util.Iterator;
  */
 public class QueryFilter<T extends Query> {
     
-    public interface filterCallback<T extends Query> {
+    public interface FilterCallback<T extends Query> {
         public boolean filter(T query);
     }
     
@@ -40,9 +39,9 @@ public class QueryFilter<T extends Query> {
      * @return
      */
     public QueryCollection<T> findManyByClass(Class<T> queryClass) {
-        return this.findMany((T query) -> {
-            return queryClass.equals(query.getClass());
-        });
+        return this.findMany((T query) -> 
+                queryClass.equals(query.getClass())
+        );
     }
     
     /**
@@ -51,9 +50,9 @@ public class QueryFilter<T extends Query> {
      * @return
      */
     public T findOneByID(String queryID){
-        return this.findOne((T query) -> {
-            return queryID.equals(query.queryID());
-        });
+        return this.findOne((T query) ->
+                queryID.equals(query.queryID())
+        );
     }
     
     /**
@@ -61,7 +60,7 @@ public class QueryFilter<T extends Query> {
      * @param callback
      * @return
      */
-    public T findOne(filterCallback<T> callback){
+    public T findOne(FilterCallback<T> callback){
         Iterator<T> iterator = this.queries.iterator();
         
         while(iterator.hasNext()) {
@@ -80,7 +79,7 @@ public class QueryFilter<T extends Query> {
      * @param callback
      * @return
      */
-    public QueryCollection<T> findMany(filterCallback<T> callback) {
+    public QueryCollection<T> findMany(FilterCallback<T> callback) {
         QueryCollection<T> filtered =  new QueryCollection();
         
         Iterator<T> iterator = this.queries.iterator();

@@ -2,14 +2,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
  */
-package com.cg.cqrs.queryBus.infra.queryBuses.localQueryBus;
+package com.cg.cqrs.querybus.infra.querybuses.localquerybus;
 
-import com.cg.cqrs.query.domain.queryAskerCollection.QueryAskerCollection;
+import com.cg.cqrs.query.domain.queryaskercollection.QueryAskerCollection;
 import com.cg.cqrs.query.domain.Query;
 import com.cg.cqrs.query.domain.QueryAsker;
 import com.cg.cqrs.query.domain.QueryResponse;
-import com.cg.cqrs.query.domain.queryAskerCollection.QueryAskerFilter;
-import com.cg.cqrs.queryBus.domain.QueryBus;
+import com.cg.cqrs.query.domain.queryaskercollection.QueryAskerFilter;
+import com.cg.cqrs.querybus.domain.QueryBus;
 
 /**
  *
@@ -34,17 +34,15 @@ public class LocalQueryBus implements QueryBus {
     
     /**
      *
-     * @param <T>
      * @param query
      * @return
-     * @throws Exception
      */
     @Override
-    public <T extends Query>QueryResponse<T> ask(T query) throws Exception {
-        QueryAsker<T> asker = this.findAskerByQuery(query);
+    public QueryResponse ask(Query query) {
+        QueryAsker asker = this.findAskerByQuery(query);
         
         if(asker == null){
-            throw new Exception("Asker not found");
+            throw new QueryAskerNotFoundException(query);
         }
         
         return asker.ask(query);

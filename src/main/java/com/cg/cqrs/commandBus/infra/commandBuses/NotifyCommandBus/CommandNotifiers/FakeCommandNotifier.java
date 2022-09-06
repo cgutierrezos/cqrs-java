@@ -2,12 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.cg.cqrs.commandBus.infra.commandBuses.NotifyCommandBus.CommandNotifiers;
+package com.cg.cqrs.commandbus.infra.commandbuses.notifycommandbus.commandnotifiers;
 
 import com.cg.cqrs.command.domain.Command;
-import com.cg.cqrs.command.domain.commandCollection.CommandCollection;
-import com.cg.cqrs.command.domain.commandCollection.CommandFilter;
-import com.cg.cqrs.commandBus.domain.CommandNotifier;
+import com.cg.cqrs.command.domain.commandcollection.CommandCollection;
+import com.cg.cqrs.command.domain.commandcollection.CommandFilter;
+import com.cg.cqrs.commandbus.domain.CommandNotifier;
 
 /**
  *
